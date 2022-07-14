@@ -1,16 +1,18 @@
 import * as express from "express";
 import { interfaces, controller, httpGet, httpPost, httpDelete, request, queryParam, response, requestParam, next } from "inversify-express-utils";
 import { injectable, inject } from "inversify";
+import { FooRepository } from "../../../repositories/foo";
 
 @controller("/foo")
 export class FooController implements interfaces.Controller {
 
-    //constructor(@inject("FooService") private fooService: FooService) { }
+    constructor(private fooRepository: FooRepository) { }
 
     @httpGet("/")
     private index(@request() req: express.Request, @response() res: express.Response, @next() next: express.NextFunction): string {
         //return this.fooService.get(req.query.id);
-        return 'live from the foo controller'
+        const result = this.fooRepository.getFoo()
+        return result
     }
 
     // @httpGet("/")

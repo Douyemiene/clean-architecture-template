@@ -3,7 +3,6 @@ import 'reflect-metadata'
 import * as bodyParser from 'body-parser';
 import { Container } from 'inversify'
 import { interfaces, InversifyExpressServer, TYPE } from 'inversify-express-utils';
-// declare metadata by @controller annotation
 import "./interface/http/controllers/foo";
 
 
