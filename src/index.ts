@@ -1,11 +1,13 @@
 import 'dotenv/config'
 import container from './container';
-import { RestServer } from './http/server';
+import { Application } from './app';
+
+
+const app = new Application(container)
+//start the server
+app.start()
 
 
 
-
-const server = new RestServer(container)
-server.start()
 
 
